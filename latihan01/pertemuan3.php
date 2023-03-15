@@ -41,6 +41,14 @@ while($a <= 20){
     }
     $a++;
 }
+echo "<br>";
+foreach($calonsukses as $x){
+    echo $x.", ";
+}
+echo "<br>";
+for($s=0 ; $s < sizeof($calonsukses); $s++){
+    echo $calonsukses[$s].", ";
+}
 ?>
 
 </body>
