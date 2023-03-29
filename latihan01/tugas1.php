@@ -47,8 +47,8 @@
   echo "Code : ".$tokoase[2]["code"]." , jenis : ".$tokoase[2]["jenis"]." , harga : ".$tokoase[2]["harga"];
   echo "<hr>";
 
-  foreach($tokoase as $tokoase){
-    foreach($tokoase as $a){
+  foreach($tokoase as $toko){
+    foreach($toko as $a){
       echo $a." : ";
     }
     echo "<hr>";
