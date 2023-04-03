@@ -23,7 +23,6 @@ function waktu(){
   $time_now1 = date("h : i : s A");
   echo $tgl_now1."<br>";
   echo $time_now1;
-
 }
 waktu();
 $time_now = date("s");
