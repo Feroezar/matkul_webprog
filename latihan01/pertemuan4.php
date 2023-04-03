@@ -34,7 +34,7 @@ foreach($data as $a){
     </tr>
     <?php } ?>
   </table>
-</div>=
+</div>
 </body>
 </html>
 <?php
