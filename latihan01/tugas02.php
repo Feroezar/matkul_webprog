@@ -31,7 +31,7 @@
         array("ID"=>"090102", "Judul" => "BAPE Hoodie", "harga"=>10000000),
         array("ID"=>"090103", "Judul" => "SUPREME BAG", "harga"=>50000000),
     );
-
+    $i = 0;
     foreach($data as $a){
     ?>
         <tr>
@@ -43,24 +43,24 @@
             $time_now = date("s"); 
             if($a["ID"] == $data[0]["ID"]){
               if($time_now == "15"){
-                $hasil1 = $data[0]["harga"] * 0.2;
-                $total1 = $data[0]["harga"] - $hasil1;
+                $hasil1 = $data[$i]["harga"] * 0.2;
+                $total1 = $data[$i]["harga"] - $hasil1;
                 echo $total1;
               }else {
                 echo "Belum Ada Diskon";
               }
             }else if($a["ID"] == $data[1]["ID"]){
               if($time_now == "45"){
-                $hasil2 = $data[1]["harga"] * 0.3;
-                $total2 = $data[1]["harga"] - $hasil2;
+                $hasil2 = $data[$i]["harga"] * 0.3;
+                $total2 = $data[$i]["harga"] - $hasil2;
                 echo $total2;
                 }else {
                   echo "Belum Ada Diskon";
                 }
             }else if($a["ID"] == $data[2]["ID"]){
               if($time_now == "30"){
-                $hasil3 = $data[2]["harga"] * 0.4;
-                $total3 = $data[2]["harga"] - $hasil3;
+                $hasil3 = $data[$i]["harga"] * 0.4;
+                $total3 = $data[$i]["harga"] - $hasil3;
                 echo $total3;
               }else {
                 echo "Belum Ada Diskon";
@@ -89,7 +89,7 @@
             ?>
           </td>
         </tr>
-        <?php } ?>
+        <?php $i++;} ?>
   </table>
 </div>
 </body>
