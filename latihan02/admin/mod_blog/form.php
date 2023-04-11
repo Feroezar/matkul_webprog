@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<form action="#" method="get">
+<form action="#" method="post">
   <div>
     <div class="mb-3 row">
       <div class="col-md-2"></div>
