@@ -5,8 +5,7 @@
       <div class="col-md">
         <div class="mb-3 row">
           <div class="col-md">
-            <input type="submit" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">Tambah Data</label>
+          <a href="" class="btn btn-primary btn-xs mb-1">Tambah Data</a>
           </div>          
         </div>
         <div class="mb-3 row">

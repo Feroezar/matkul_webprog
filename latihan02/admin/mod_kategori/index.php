@@ -1,4 +1,10 @@
-
+<?php
+if(!isset($_GET['aksi'])){
+?>
+<?php
+  $qdata = mysqli_query($koneksidb, "select * from mst_katagori") 
+    or die(mysqli_error($koneksidb));
+?>
 <form action="#" method="get">
   <section class="container-fluid">
     <div class="mb-3 row" style="margin-top: 30px;">
@@ -6,8 +12,7 @@
       <div class="col-md">
         <div class="mb-3 row">
           <div class="col-md">
-            <input type="submit" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">Tambah Data</label>
+            <a href="?modul=mod_kategori&aksi=add" class="btn btn-primary btn-xs mb-1">Tambah Data</a>
           </div>          
         </div>
         <div class="mb-3 row">
@@ -20,28 +25,20 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
+      <?php 
+        while($row = mysqli_fetch_array($qdata)){
+      ?>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>Mbolang</td>
+                <td scope="row"><?php echo $row["id_katagori"]?></td>
+                <td><?php echo $row["nm_katagari"]?></td>
                 <td>
-                  <input type="submit" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-check2-square"></i>Edit</label>
-                  <input type="reset" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-trash"></i>Delete</label>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Kuliah</td>
-                <td>
-                  <input type="submit" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-check2-square"></i>Edit</label>
-                  <input type="reset" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-trash"></i>Delete</label>
+                <a href="" class="btn btn-primary btn-xs mb-1">Edit</a>
+                <a href="" class="btn btn-primary btn-xs mb-1">Delete</a>
                 </td>
               </tr>
             </tbody>
+      <?php } ?>
           </table>
           </div>
         </div>
@@ -50,3 +47,34 @@
     </div>
   </section>
 </form>
+<?php } 
+else if(isset($_GET['aksi'])){
+
+?>
+
+<form action="mod_kategori/proses.php?aksi=insert" method="post">
+  <div>
+    <div class="mb-3 row">
+      <div class="col-md-2"></div>
+      <div class="col-md">
+        <div class="mb-3 row">
+          <h1>Form Input Data</h1>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-md-2">
+            Nama Kategori :
+          </div>
+          <div class="col-md">
+          <div class="mb-3">
+            <input type="text" class="form-control" name="txt_nama" id="txtnama">
+          </div>
+          <button type="reset" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Batal</button>
+          <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Submit</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</form>
+<?php } ?>

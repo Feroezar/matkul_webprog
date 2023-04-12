@@ -1,9 +1,13 @@
+<?php
+  require_once("../koneksidb.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>Document</title>
 </head>
@@ -37,15 +41,21 @@
       <div class="row border border-warning" style="padding :30px; margin-top: 20px;">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-          <div class="mb-3 row border"><a href="#">Data Kategori</a></div>
-          <div class="mb-3 row border"><a href="#">Data Artikel</a></div>
-          <div class="mb-3 row border"><a href="#">Data User</a></div>
+          <div class="mb-3 row border"><a href="?modul=mod_kategori">Blog Kategori</a></div>
+          <div class="mb-3 row border"><a href="?modul=mod_blog">Data Blog</a></div>
+          <div class="mb-3 row border"><a href="?modul=mod_user">Data User</a></div>
           <div class="mb-3 row border"><a href="#">Data Menu</a></div>
         </div>
         <div class="col-md"></div>
       </div>
   </div>
     <div class="col-md konten">
+      <?php
+        if(isset($_GET["modul"])){
+          include_once("".$_GET["modul"]."/index.php");
+        }
+
+      ?>
     </div>
   </div>
 </section>
