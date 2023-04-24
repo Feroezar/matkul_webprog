@@ -47,11 +47,10 @@ if(!isset($_GET['aksi'])){
     </div>
   </section>
 </form>
+
 <?php } 
 else if(isset($_GET['aksi'])){
-
 ?>
-
 <form action="mod_kategori/proses.php?aksi=insert" method="post">
   <div>
     <div class="mb-3 row">
