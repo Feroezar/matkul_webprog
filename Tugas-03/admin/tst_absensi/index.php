@@ -1,11 +1,11 @@
 <?php
-if(!isset($_GET['aksi'])){
+  if(!isset($_GET['aksi'])){
 ?>
 <?php
   $qdata = mysqli_query($koneksidb, "select * from tst_absensi") 
     or die(mysqli_error($koneksidb));
 ?>
-<form action="#" method="get">
+<form action="tst_absensi/proses.php" method="get">
   <section class="container-fluid">
     <div class="mb-3 row" style="margin-top: 30px;">
       <div class="col-md-2"></div>
@@ -44,7 +44,7 @@ if(!isset($_GET['aksi'])){
                 <td><?php echo $row["Alpha"]?></td>
                 <td>
                 <a href="" class="btn btn-primary btn-xs mb-1">Edit</a>
-                <a href="" class="btn btn-primary btn-xs mb-1">Delete</a>
+                <a href="?aksi=delete&nim=<?php echo $row["NIM"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>
                 </td>
               </tr>
             </tbody>

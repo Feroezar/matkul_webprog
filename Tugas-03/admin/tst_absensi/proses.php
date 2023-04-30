@@ -16,8 +16,14 @@ if($_GET["aksi"]=="insert"){
 else if($_GET["aksi"]=="update"){
   echo "Proses Update";
 }
-else if($_GET["aksi"]=="delete"){
+$row = mysqli_fetch_array($qdata);
+if($_GET["aksi"]=="delete"){
   echo "Proses Delete";
+  
+  $hapus = mysqli_query($koneksidb,"DELETE FROM tst_absensi WHERE NIM ='".$row['NIM']."';");
+  if($hapus){
+    header("Location: http://localhost/matkul_webprog/tugas-03/admin/home.php?modul=tst_absensi");
+  }
 }
 
 ?>
