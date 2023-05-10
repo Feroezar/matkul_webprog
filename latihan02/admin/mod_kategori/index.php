@@ -26,6 +26,7 @@ if(!isset($_GET['aksi'])){
               </tr>
             </thead>
       <?php 
+      $no = 1;
         while($row = mysqli_fetch_array($qdata)){
       ?>
             <tbody>
@@ -33,12 +34,12 @@ if(!isset($_GET['aksi'])){
                 <td scope="row"><?php echo $row["id_katagori"]?></td>
                 <td><?php echo $row["nm_katagari"]?></td>
                 <td>
-                <a href="" class="btn btn-primary btn-xs mb-1">Edit</a>
-                <a href="" class="btn btn-primary btn-xs mb-1">Delete</a>
+                <a href="?modul=mod_kategori&aksi=edit&id=<?php echo $row["id_katagori"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>
+                <a href="mod_kategori/proses.php?proses=delete&id=<?= $row["id_katagori"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>
                 </td>
               </tr>
             </tbody>
-      <?php } ?>
+      <?php $no++;} ?>
           </table>
           </div>
         </div>
@@ -50,8 +51,24 @@ if(!isset($_GET['aksi'])){
 
 <?php } 
 else if(isset($_GET['aksi'])){
+  
+    if($_GET['aksi'] == "edit"){
+      $edit = mysqli_query($koneksidb, "select * from mst_katagori where id_katagori =".$_GET['id']."") 
+        or die(mysqli_error($koneksidb));
+      $data = mysqli_fetch_array($edit);
+      // echo $data["nm_katagari"];
+      $nama = $data["nm_katagari"];
+      $idnya = $_GET["id"];
+      $exproses = "update";
+    }
+    else if($_GET["aksi"] == "add"){
+      $nama="";
+      $idnya = 0;
+      $exproses = "insert";
+    }
+
 ?>
-<form action="mod_kategori/proses.php?aksi=insert" method="post">
+<form action="mod_kategori/proses.php?proses=<?= $exproses;?>" method="post">
   <div>
     <div class="mb-3 row">
       <div class="col-md-2"></div>
@@ -65,7 +82,8 @@ else if(isset($_GET['aksi'])){
           </div>
           <div class="col-md">
           <div class="mb-3">
-            <input type="text" class="form-control" name="txt_nama" id="txtnama">
+            <input type="hidden" name="txt_id" id="txt_id" value="<?= $idnya; ?>">
+            <input type="text" class="form-control" name="txt_nama" id="txtnama" value=<?php echo $nama; ?>>
           </div>
           <button type="reset" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Batal</button>
           <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Submit</button>
