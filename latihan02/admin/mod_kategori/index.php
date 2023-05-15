@@ -31,7 +31,7 @@ if(!isset($_GET['aksi'])){
       ?>
             <tbody>
               <tr>
-                <td scope="row"><?php echo $row["id_katagori"]?></td>
+                <td><?php echo $row["id_katagori"]?></td>
                 <td><?php echo $row["nm_katagari"]?></td>
                 <td>
                 <a href="?modul=mod_kategori&aksi=edit&id=<?php echo $row["id_katagori"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>

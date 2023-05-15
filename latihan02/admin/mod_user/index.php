@@ -25,28 +25,20 @@ if(!isset($_GET['aksi'])){
                 <th scope="col">Action</th>
               </tr>
             </thead>
+          <?php 
+            while($row = mysqli_fetch_array($qdata)){
+          ?>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>Mbolang</td>
+                <td><?= $row["username"] ?></td>
+                <td><?= $row['user_pass']?></td>
                 <td>
-                  <input type="submit" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-check2-square"></i>Edit</label>
-                  <input type="reset" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-trash"></i>Delete</label>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Kuliah</td>
-                <td>
-                  <input type="submit" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-check2-square"></i>Edit</label>
-                  <input type="reset" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                  <label class="btn btn-outline-primary" for="btnradio3"><i class="bi bi-trash"></i>Delete</label>
+                <a href="?modul=mod_user&aksi=edit&id=<?= $row["id_user"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>
+                <a href="mod_user/proses.php?proses=delete&id=<?= $row["id_user"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>
                 </td>
               </tr>
             </tbody>
+            <?php }?>
           </table>
           </div>
         </div>
@@ -58,9 +50,23 @@ if(!isset($_GET['aksi'])){
 
 <?php } 
 else if(isset($_GET['aksi'])){
+  if($_GET['aksi'] == "edit"){
+    $edit = mysqli_query($koneksidb, "select * from mst_user where id_user =".$_GET['id']."") 
+      or die(mysqli_error($koneksidb));
+    $data = mysqli_fetch_array($edit);
+    echo $data["nm_katagari"];
+    $nama = $data["username"];
+    $idnya = $_GET["id"];
+    $exproses = "update";
+  }
+  else if($_GET["aksi"] == "add"){
+    $nama="";
+    $idnya = 0;
+    $exproses = "insert";
+  }
 ?>
 
-<form action="#" method="get">
+<form action="mod_user/proses.php?proses=<?= $exproses;?>" method="post">
   <div>
     <div class="mb-3 row">
       <div class="col-md-2"></div>
@@ -69,36 +75,36 @@ else if(isset($_GET['aksi'])){
           <h1>Form Input Data</h1>
         </div>
         <div class="mb-3 row">
-          <div class="col-md-2">
-            id_user :
+          <div class="col-md-3">
+            <!-- id_user : -->
           </div>
           <div class="col-md">
             <div class="mb-3">
-              <input type="text" class="form-control" id="exampleInputPassword1" maxlength="11">
+              <input type="hidden" name="id_user" class="form-control" id="exampleInputPassword1" maxlength="11" value="<?= $idnya?>">
             </div>
           </div>
         </div>
         <div class="mb-3 row">
-          <div class="col-md-2">
+          <div class="col-md-3">
             username :
           </div>
           <div class="col-md">
             <div class="mb-3">
-              <input type="text" class="form-control" id="exampleInputPassword1" maxlength="16">
+              <input type="text" name="user" class="form-control" id="exampleInputPassword1" maxlength="16"  value=<?= $nama; ?>>
             </div>
           </div>
         </div>
         <div class="mb-3 row">
-          <div class="col-md-2">
+          <div class="col-md-3">
             password :
           </div>
           <div class="col-md">
           <div class="mb-3">
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">is_active</label>
+            <input type="checkbox" class="form-check-input" name="aktivasi">
+            <label class="form-check-label">is_active</label>
           </div>
           <button type="reset" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Batal</button>
           <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Submit</button>
