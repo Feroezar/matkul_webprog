@@ -54,7 +54,7 @@ else if(isset($_GET['aksi'])){
     $edit = mysqli_query($koneksidb, "select * from mst_user where id_user =".$_GET['id']."") 
       or die(mysqli_error($koneksidb));
     $data = mysqli_fetch_array($edit);
-    echo $data["nm_katagari"];
+    // echo $data["nm_katagari"];
     $nama = $data["username"];
     $idnya = $_GET["id"];
     $exproses = "update";
