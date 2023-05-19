@@ -90,7 +90,7 @@ else if(isset($_GET['aksi'])){
           </div>
           <div class="col-md">
             <div class="mb-3">
-              <input type="text" name="user" class="form-control" id="exampleInputPassword1" maxlength="16"  value=<?= $nama; ?>>
+              <input type="text" name="user" class="form-control" id="" maxlength="16"  value=<?= $nama; ?>>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ else if(isset($_GET['aksi'])){
           </div>
           <div class="col-md">
           <div class="mb-3">
-            <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+            <input type="password" name="pass" class="form-control" id="">
           </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" name="aktivasi">
