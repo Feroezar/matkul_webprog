@@ -64,7 +64,7 @@ else if(isset($_GET['aksi'])){
     $judulnya = $data["Judul"];
     $isinya = $data["isi_blog"];
     $tglnya = $data["tgl_blog"];
-    $idnya = $_GET["id"];
+    $idblog = $_GET["id"];
     $isaktif = $data["is_aktif"];
     $exproses = "update";
   }
@@ -86,7 +86,7 @@ else if(isset($_GET['aksi'])){
         <div class="mb-3 row">
           <h1>Form Input Data</h1>
         </div>
-        <input type="hidden" name="idblog" value="<?= $idblog?>">
+          <input type="hidden" name="id_blog" class="form-control" id="exampleInputPassword1" maxlength="11" value="<?= $idblog?>">
         <div class="mb-3 row">
           <div class="col-md-2">
             Kategori Blog :
@@ -113,7 +113,6 @@ else if(isset($_GET['aksi'])){
           </div>
           <div class="col-md">
             <div class="mb-3">
-              <input type="hidden" name="id_blog" class="form-control" id="exampleInputPassword1" maxlength="11" value="<?= $idnya?>">
               <input type="text" name="judul" class="form-control" id="mtext" value="<?= $judulnya?>">
             </div>
           </div>
