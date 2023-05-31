@@ -13,7 +13,6 @@ if($checkhasil > 0){
     header("Location: home.php");
 }else{
     $_SESSION["pesan"] = "ID or Password wrong";
-
     header("Location: index.php");
 }
 ?>
