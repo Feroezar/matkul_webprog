@@ -26,3 +26,8 @@ label,input{
     color: blue;
     background-color: bisque;
 }
+.konten{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: aliceblue;
+}

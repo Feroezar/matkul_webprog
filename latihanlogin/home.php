@@ -1,6 +1,9 @@
 <?php
-require_once("koneksi_db.php");
+// require_once("koneksi_db.php");
 session_start();
+if(!isset($_SESSION['namalog'])){
+  header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +22,9 @@ session_start();
     </div>
     <div class="col-md konten">
       <?php
-        if(isset($_GET["modul"])){
-          include_once("".$_GET["modul"]."/index.php");
-        }
+        // if(isset($_GET["modul"])){
+        //   include_once("".$_GET["modul"]."/index.php");
+        // }
       ?>
     </div>
 </body>
