@@ -2,7 +2,7 @@
 if(!isset($_GET['aksi'])){
 ?>
 <?php
-  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_katagari FROM mst_blog AS a INNER JOIN mst_katagori AS b ON a.id_katagori = b.id_katagori ") 
+  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
     or die(mysqli_error($koneksidb));
 ?>
   <section class="container-fluid">
@@ -31,12 +31,12 @@ if(!isset($_GET['aksi'])){
                 while($row = mysqli_fetch_array($qdata)){
               ?>
               <tr>
-                <th><?= $row["Judul"]?></th>
-                <td><?= $row["FIle_gmb"]?></td>
+                <th><?= $row["judul"]?></th>
+                <td><?= $row["file_gmb"]?></td>
                 <td><?= $row["isi_blog"]?></td>
                 <td><?= $row["tgl_blog"]?></td>
-                <td><?= $row["Penulis"]?></td>
-                <td><?= $row["nm_katagari"]?></td>
+                <td><?= $row["penulis"]?></td>
+                <td><?= $row["nm_kategori"]?></td>
                 <td>
                 <a href="?modul=mod_blog&aksi=edit&id=<?php echo $row["id_blog"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>
                 <a href="mod_blog/proses.php?proses=delete&id=<?= $row["id_blog"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>
@@ -59,9 +59,9 @@ else if(isset($_GET['aksi'])){
     $edit = mysqli_query($koneksidb, "select * from mst_blog where id_blog =".$_GET['id']."") 
       or die(mysqli_error($koneksidb));
     $data = mysqli_fetch_array($edit);
-    // echo $data["nm_katagari"];
-    $kategorinya = $data["id_katagori"];
-    $judulnya = $data["Judul"];
+    // echo $data["nm_kategori"];
+    $kategorinya = $data["id_kategori"];
+    $judulnya = $data["judul"];
     $isinya = $data["isi_blog"];
     $tglnya = $data["tgl_blog"];
     $idblog = $_GET["id"];
@@ -95,13 +95,13 @@ else if(isset($_GET['aksi'])){
           <select class="form-select" aria-label="Default select example" name="kategori">
             <option selected>DiPilih</option>
               <?php 
-              $qkategori = mysqli_query($koneksidb, "select * from mst_katagori")
+              $qkategori = mysqli_query($koneksidb, "select * from mst_kategori")
                           or die ("data tidak dditemukan".mysqli_error($koneksidb));
               while ($cb = mysqli_fetch_array($qkategori)){
-                if($cb["id_katagori"] == $kategorinya)
+                if($cb["id_kategori"] == $kategorinya)
                 { $pilih = "selected"; }
                 else{ $pilih=""; }
-                echo '<option value="'.$cb["id_katagori"] .'"'.$pilih.'>'.$cb["nm_katagari"].'</option>';
+                echo '<option value="'.$cb["id_kategori"] .'"'.$pilih.'>'.$cb["nm_kategori"].'</option>';
               } 
               ?>
           </select>

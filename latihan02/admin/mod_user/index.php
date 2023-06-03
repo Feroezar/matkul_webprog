@@ -31,7 +31,7 @@ if(!isset($_GET['aksi'])){
             <tbody>
               <tr>
                 <td><?= $row["username"] ?></td>
-                <td><?= $row['user_pass']?></td>
+                <td><?= $row['pass_user']?></td>
                 <td>
                 <a href="?modul=mod_user&aksi=edit&id=<?= $row["id_user"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>
                 <a href="mod_user/proses.php?proses=delete&id=<?= $row["id_user"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>

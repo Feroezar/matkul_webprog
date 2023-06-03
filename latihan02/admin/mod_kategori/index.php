@@ -2,7 +2,7 @@
 if(!isset($_GET['aksi'])){
 ?>
 <?php
-  $qdata = mysqli_query($koneksidb, "select * from mst_katagori") 
+  $qdata = mysqli_query($koneksidb, "select * from mst_kategori") 
     or die(mysqli_error($koneksidb));
 ?>
 <form action="#" method="get">
@@ -31,11 +31,11 @@ if(!isset($_GET['aksi'])){
       ?>
             <tbody>
               <tr>
-                <td><?php echo $row["id_katagori"]?></td>
-                <td><?php echo $row["nm_katagari"]?></td>
+                <td><?php echo $row["id_kategori"]?></td>
+                <td><?php echo $row["nm_kategori"]?></td>
                 <td>
-                <a href="?modul=mod_kategori&aksi=edit&id=<?php echo $row["id_katagori"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>
-                <a href="mod_kategori/proses.php?proses=delete&id=<?= $row["id_katagori"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>
+                <a href="?modul=mod_kategori&aksi=edit&id=<?php echo $row["id_kategori"]?>" class="btn btn-primary btn-xs mb-1">Edit</a>
+                <a href="mod_kategori/proses.php?proses=delete&id=<?= $row["id_kategori"]?>" class="btn btn-primary btn-xs mb-1">Delete</a>
                 </td>
               </tr>
             </tbody>
@@ -53,11 +53,11 @@ if(!isset($_GET['aksi'])){
 else if(isset($_GET['aksi'])){
   
     if($_GET['aksi'] == "edit"){
-      $edit = mysqli_query($koneksidb, "select * from mst_katagori where id_katagori =".$_GET['id']."") 
+      $edit = mysqli_query($koneksidb, "select * from mst_kategori where id_kategori =".$_GET['id']."") 
         or die(mysqli_error($koneksidb));
       $data = mysqli_fetch_array($edit);
-      // echo $data["nm_katagari"];
-      $nama = $data["nm_katagari"];
+      // echo $data["nm_kategori"];
+      $nama = $data["nm_kategori"];
       $idnya = $_GET["id"];
       $exproses = "update";
     }

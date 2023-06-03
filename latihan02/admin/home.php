@@ -1,5 +1,9 @@
 <?php
   require_once("../koneksidb.php");
+  session_start();
+if(!isset($_SESSION['namalog'])){
+  header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
