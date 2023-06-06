@@ -9,11 +9,10 @@ $nama = mysqli_fetch_array($query_login);
 if($checkhasil > 0){
     echo "selamat berhasil";
     $_SESSION['userlog'] = $usernya;
-    $_SESSION['namalog'] = $nama["nama"]; 
+    $_SESSION['namalog'] = $nama["nama"];
     header("Location: home.php");
 }else{
     $_SESSION["pesan"] = "ID or Password wrong";
     header("Location: index.php");
-    
 }
 ?>

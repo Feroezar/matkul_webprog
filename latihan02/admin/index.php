@@ -17,17 +17,16 @@
 </head>
 <body>
 <form action="checklogin.php" method="post">
-  <div class="modal-body">    
-    <div class="mb-3 row">
-      <div class="col-md-3 chi">
-      <?php
+<?php
           session_start();
           session_destroy();
           if(isset($_SESSION['pesan'])){
             echo $_SESSION['pesan'];
           }  
-            ?>
-      </div>
+      ?>
+  <div class="modal-body">    
+    <div class="mb-3 row">
+      <div class="col-md-3 chi"></div>
         <div class="col-md-2">Username</div>
           <div class="col-md">
             <input type="text" class="form-control" name="txt_user" id="txt_user" placeholder="Username">

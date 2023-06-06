@@ -1,5 +1,5 @@
 <?php
-  require_once("../koneksidb.php");
+  require_once ("../koneksidb.php");
   session_start();
 if(!isset($_SESSION['namalog'])){
   header("Location: index.php");
