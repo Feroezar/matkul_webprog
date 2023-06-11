@@ -1,3 +1,8 @@
+<?php
+require_once("../../koneksidb.php");
+  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
+    or die(mysqli_error($koneksidb));
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,7 +48,7 @@
         >
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fontnav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.html#contactus">Contact Us</a>
@@ -93,38 +98,26 @@
         <div class="row mb-4">
           <div class="col-md-1"></div>
           <div class="col-md-10">
-            <h4>Judul Artikel-1</h4>
+            <?php 
+            $edit = mysqli_query($koneksidb, "select * from mst_blog where id_blog =".$_GET['id']."") 
+              or die(mysqli_error($koneksidb));
+            $data = mysqli_fetch_array($edit)
+            ?>
+            <h4><?= $data["judul"]?></h4>
             <div class="mb-2">
               <span class="fs-6"
-                ><i class="bi bi-calendar"></i> 10/11/2011, Created By :
-                Aninur</span
+                ><i class="bi bi-calendar"></i> <?= $data["tgl_blog"]?>, Created By :
+                <?= $data["penulis"]?></span
               >
               <hr />
             </div>
             <img
-              src="assets/images/gambar1.jpg"
+              src="assets/images/<?= $data["file_gmb"]?>"
               width="500"
               class="img-thumbnail img-fluid mx-auto d-block"
             />
             <p class="justify-content-evenly">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              fugit quod cumqloremue Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Perferendis saepe, nobis aspernatur molestiae
-              sequi aperiam neque. Et deleniti nostrum odit impedit ex. Possimus
-              doloribus nemo officia aspernatur, nam dolorem vero. provident
-              quasi! Ut minus veritatis sed atque, aut modi fugit? Veniam quos
-              voluptatum harum cumque vero, numquam dolore! Lorem ipsum dolor
-              sit amet, consectetur adipisicing elit. Maxime reprehenderit
-              aliquam natus non. Laudantium ex quos laboriosam, laborum nemo
-              blanditiis, placeat eligendi sequi eius voluptatibus eum illum
-              amet quisquam sit. Lorem ipsum, dolor sit amet consectetur
-              adipisicing elit. Ducimus architecto perspiciatis odio voluptas
-              deserunt enim ullam velit itaque at, illo iste dolor
-              exercitationem magnam fugit pariatur praesentium facere in.
-              Ullam?Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Odio cupiditate veniam a hic quia fugiat, modi aspernatur
-              molestias sapiente suscipit expedita ab temporibus ad quibusdam
-              asperiores odit unde, dolores id.
+            <?= $data["isi_blog"]?>
             </p>
             <hr />
           </div>

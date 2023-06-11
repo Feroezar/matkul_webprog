@@ -1,13 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modul User</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-</body>
-</html>
+<div class="container">
+    <a href="?modul=mod_user&aksi=tambah">Tambah data</a>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>No</th>
+            <th>Username</th>
+            <th>Nama Lengkap</th>
+            <th>Action</th>
+        </tr>
+        <?php 
+        $no = 1;
+        $user= mysqli_query($koneksi_db, "select * from mst_user") 
+        or die(mysqli_error($koneksidb));
+
+        while($data = mysqli_fetch_array($user))
+        {
+        ?>
+        <tr>
+            <td><?= $no++;?></td>
+            <td><?= $data["username"]?></td>
+            <td><?= $data["nama"]?></td>
+            <td>
+                <a href="">Ubah</a>
+                <a href="">hapus</a>
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+</div>
+

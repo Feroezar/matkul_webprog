@@ -1,9 +1,8 @@
 <?php
-// require_once("koneksi_db.php");
+require_once("koneksi_db.php");
 session_start();
-if(!isset($_SESSION['namalog'])){
-  header("Location: index.php");
-}
+require_once("config.php");
+securitylogin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,12 +18,16 @@ if(!isset($_SESSION['namalog'])){
         <h2>Hai, <?= $_SESSION['namalog']?></h2>
         <a class="btn" href="?modul=mod_user">Modul User</a>
         <a class="btn" href="?modul=mod_pegawai">Modul Pegawai</a>
+        <a class="btn" href="signout.php">SIGN OUT</a>
     </div>
     <div class="col-md konten">
       <?php
-        // if(isset($_GET["modul"])){
-        //   include_once("".$_GET["modul"]."/index.php");
-        // }
+      if(isset($_GET["modul"]) && !isset($_GET["aksi"])){
+        include_once("".$_GET["modul"]."/index.php");
+      }
+      else if(isset($_GET["modul"]) && isset($_GET["aksi"])){
+        include_once("".$_GET["modul"]."/form.php");
+      }
       ?>
     </div>
 </body>

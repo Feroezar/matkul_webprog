@@ -1,3 +1,8 @@
+<?php
+require_once("../../koneksidb.php");
+  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
+    or die(mysqli_error($koneksidb));
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -130,58 +135,39 @@
     <section id="blog" class="bg-white">
       <div class="container-fluid d-flex flex-column align-items-center p-4">
         <h1 class="text-primary text-opacity-100 pb-3">=== My Blog ===</h1>
+        <?php
+          while($row = mysqli_fetch_array($qdata)){
+          ?>
         <div class="row mb-4">
           <div class="col-md-2"></div>
           <div class="col-md-2">
             <img
-              src="assets/images/gambar1.jpg"
+              src="assets/images/<?= $row["file_gmb"]?>"
               width="270"
+              height="270"
               class="img-fluid img-thumbnail"
             />
           </div>
           <div class="col-md-6">
-            <h4>Judul Artikel-1</h4>
+            <h4><?= $row["judul"]?></h4>
             <div>
-              <span class="badge bg-info text-white rounded-3 fs-6"
-                >10/11/2011</span
-              >
-              <span class="text-primary fs-6">Created By : Aninur</span>
+              <span class="badge bg-info text-white rounded-3 fs-6">
+                <?= $row["tgl_blog"]?></span>
+              <span class="text-primary fs-6">Created By :<?= $row["penulis"]?></span>
             </div>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              fugit quod cumque provident quasi! Ut minus veritatis sed atque,
-              aut modi fugit? Veniam quos voluptatum harum cumque vero, numquam
-              dolore! [ <a href="detailblog.html">Baca Selengkapnya</a> ]
+            <?= substr_replace($row["isi_blog"], "...", 100); ?> 
+            [ <a href="detailblog.php?id=<?php echo $row["id_blog"]?>">Baca Selengkapnya</a> ]
             </p>
             <hr />
           </div>
         </div>
-        <div class="row mb-4">
-          <div class="col-md-2"></div>
-          <div class="col-md-2">
-            <img
-              src="assets/images/gambar1.jpg"
-              width="270"
-              class="img-fluid img-thumbnail"
-            />
-          </div>
-          <div class="col-md-6">
-            <h4>Judul Artikel-2</h4>
-            <div>
-              <span class="badge bg-info text-white rounded-3 fs-6"
-                >10/11/2011</span
-              >
-              <span class="text-primary fs-6">Created By : Aninur</span>
-            </div>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              fugit quod cumque provident quasi! Ut minus veritatis sed atque,
-              aut modi fugit? Veniam quos voluptatum harum cumque vero, numquam
-              dolore! [ <a href="#">Baca Selengkapnya</a> ]
-            </p>
-            <hr />
-          </div>
-        </div>
+        <?php }
+        if(isset($_GET["id"])){
+          include_once("detailblog.php");
+        }
+
+      ?>
       </div>
     </section>
     <!-- contact us -->
