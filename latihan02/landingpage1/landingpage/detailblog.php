@@ -1,6 +1,7 @@
 <?php
 require_once("../../koneksidb.php");
-  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
+  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN 
+  mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
     or die(mysqli_error($koneksidb));
 ?>
 <!DOCTYPE html>
@@ -101,7 +102,7 @@ require_once("../../koneksidb.php");
             <?php 
             $edit = mysqli_query($koneksidb, "select * from mst_blog where id_blog =".$_GET['id']."") 
               or die(mysqli_error($koneksidb));
-            $data = mysqli_fetch_array($edit)
+            $data = mysqli_fetch_array($edit);
             ?>
             <h4><?= $data["judul"]?></h4>
             <div class="mb-2">

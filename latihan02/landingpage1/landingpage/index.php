@@ -1,5 +1,5 @@
 <?php
-require_once("../../koneksidb.php");
+  require_once("../../koneksidb.php");
   $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
     or die(mysqli_error($koneksidb));
 ?>
@@ -28,7 +28,7 @@ require_once("../../koneksidb.php");
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
       <div class="container-fluid pe-5 ps-5">
         <a class="navbar-brand fw-bold" href="index.html"
-          ><h3>FeroEza Page</h3></a
+          ><h3>FeroEzar Page</h3></a
         >
         <button
           class="navbar-toggler"
@@ -163,10 +163,6 @@ require_once("../../koneksidb.php");
           </div>
         </div>
         <?php }
-        if(isset($_GET["id"])){
-          include_once("detailblog.php");
-        }
-
       ?>
       </div>
     </section>
