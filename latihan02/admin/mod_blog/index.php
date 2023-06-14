@@ -141,7 +141,7 @@ else if(isset($_GET['aksi'])){
             Tanggal Input :
           </div>
           <div class="col-md">
-            <input type="datetime-local" name="tanggal" id="mdate" value="<?= $tglnya ?>">
+            <input type="date" name="tanggal" id="mdate" value="<?= $tglnya ?>">
             <input type="checkbox" name="is_aktif" id=""<?php if($isaktif == 1){ echo "checked"; } ?>>
           </div>
         </div>

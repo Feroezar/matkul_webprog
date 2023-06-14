@@ -30,5 +30,6 @@ securitylogin();
       }
       ?>
     </div>
+<script src="config.js"></script>
 </body>
 </html>

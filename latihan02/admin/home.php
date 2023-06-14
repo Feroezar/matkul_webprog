@@ -58,7 +58,6 @@ if(!isset($_SESSION['namalog'])){
         if(isset($_GET["modul"])){
           include_once("".$_GET["modul"]."/index.php");
         }
-
       ?>
     </div>
   </div>

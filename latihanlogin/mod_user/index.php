@@ -20,7 +20,7 @@
             <td><?= $data["username"]?></td>
             <td><?= $data["nama"]?></td>
             <td>
-                <a href="">Ubah</a>
+                <a href="?modul=mod_user&aksi=ubah&user=<?= $data["username"]?>">Ubah</a>
                 <a href="">hapus</a>
             </td>
         </tr>
