@@ -9,7 +9,7 @@
         </tr>
         <?php 
         $no = 1;
-        $user= mysqli_query($koneksi_db, "select * from mst_user") 
+        $user= mysqli_query($koneksi_db, "SELECT * FROM mst_user WHERE is_active = 1") 
         or die(mysqli_error($koneksidb));
 
         while($data = mysqli_fetch_array($user))
@@ -21,7 +21,7 @@
             <td><?= $data["nama"]?></td>
             <td>
                 <a href="?modul=mod_user&aksi=ubah&user=<?= $data["username"]?>">Ubah</a>
-                <a href="">hapus</a>
+                <a href="mod_user/proses_delete.php?user=<?= $data["username"]?>">hapus</a>
             </td>
         </tr>
         <?php } ?>

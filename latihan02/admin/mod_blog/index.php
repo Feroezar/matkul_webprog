@@ -2,7 +2,7 @@
 if(!isset($_GET['aksi'])){
 ?>
 <?php
-  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori ") 
+  $qdata = mysqli_query($koneksidb, "SELECT a.*, nm_kategori FROM mst_blog AS a INNER JOIN mst_kategori AS b ON a.id_kategori = b.id_kategori") 
     or die(mysqli_error($koneksidb));
 ?>
   <section class="container-fluid">
