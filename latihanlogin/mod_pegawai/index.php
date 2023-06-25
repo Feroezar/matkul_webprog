@@ -9,6 +9,8 @@
             <th>Devisi Jabatan</th>
             <th>Status</th>
             <th>Tanggal Masuk</th>
+            <th>Alamat</th>
+            <th>Foto Profile</th>
             <th>Action</th>
         </tr>
         <?php 
@@ -26,9 +28,11 @@
             <td><?= $data["nama_divisi"]?> . <?= $data["jabatan"]?></td>
             <td><?= $data["status"]?></td>
             <td><?= date('d-m-Y', strtotime($data["tgl_masuk"]))?></td>
+            <td><?= $data["alamat"]?></td>
+            <td><img src="filefoto/<?= $data["foto"]?>" width="130px" height="100px" alt=""></td>
             <td>
-                <a href="">Ubah</a>
-                <a href="">Hapus</a>
+                <a href="?modul=mod_pegawai&aksi=ubah&idpeg=<?= $data["idpegawai"]?>">Ubah</a>
+                <a href="mod_pegawai/proses_delete.php?idpeg=<?= $data["idpegawai"]?>">Hapus</a>
             </td>
         </tr>
         <?php } ?>
