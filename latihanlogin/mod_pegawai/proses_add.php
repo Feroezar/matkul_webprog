@@ -19,14 +19,9 @@ if(isset($_POST['st_tetap'])){
 //upload file ato foto
 
 $file = $_FILES['tx_file'];
-var_dump($file);
-echo "<hr>";
 $target_folder = '../filefoto/';
-echo "<hr>";
-echo $file['name']."<br>";
 $target_file = $target_folder.$file['name'];
 $type_file = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
-echo $type_file."<br>";
 $boleh_upload = 1;
 if($file['size'] > 3000000){
     $boleh_upload = 0;

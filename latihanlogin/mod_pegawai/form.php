@@ -103,13 +103,13 @@ if($_GET["aksi"] == "tambah"){
         <div class="col-md">
             <label for="status">Status Pegawai</label>
             <?php 
-            $jk = $data["status"];
+            $status = $data["status"];
             $cek_kontrak = "";
             $cek_tetap = "";
-            if($jk == 'Kontrak'){
+            if($status == 'Kontrak'){
                 $cek_kontrak = 'checked';
             }
-            if($jk == 'Tetap'){
+            if($status == 'Tetap'){
                 $cek_tetap = 'checked';
             }
             ?>
@@ -126,7 +126,7 @@ if($_GET["aksi"] == "tambah"){
         </div>
         <div class="col-md">
             <img src="filefoto/<?= $data["foto"]?>" width="130px" height="100px" alt="">
-            <input type="hidden" name="filelama" value="<?= $data["foto"]?>">
+            <input type="text" name="filelama" value="<?= $data["foto"]?>">
             <label for="tx_file">Upload Foto</label>
             <input type="file" name="tx_file" id="tx_file">
         </div>

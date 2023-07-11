@@ -6,11 +6,11 @@
             <th>No</th>
             <th>Nama Pegawai</th>
             <th>Jenis Kelamin</th>
-            <th>Devisi Jabatan</th>
-            <th>Status</th>
+            <th>Nama Divisi & Jabatan</th>
+            <th>status</th>
             <th>Tanggal Masuk</th>
             <th>Alamat</th>
-            <th>Foto Profile</th>
+            <th>Foto</th>
             <th>Action</th>
         </tr>
         <?php 
